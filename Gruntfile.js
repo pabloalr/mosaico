@@ -48,7 +48,7 @@ module.exports = function(grunt) {
       css: {
         files: {
           "build/mosaico.css": "src/css/app_standalone.less",
-          "build/mosaico-material.css": "src/css/app_standalone_material.less"
+          "build/mosaico-material.css": ["src/css/app_standalone_material.less", "src/css/style_mailee.less"]
         }
       }
     },
