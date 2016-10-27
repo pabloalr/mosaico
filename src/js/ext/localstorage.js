@@ -48,6 +48,10 @@ var lsCommandPluginFactory = function(md, emailProcessorBackend) {
       name: 'Download', // l10n happens in the template
       enabled: ko.observable(true)
     };
+    var saveAndContinueCmd = {
+      name: 'Save and continue',
+      enabled: ko.observable(true)
+    };
     testCmd.execute = function() {
       testCmd.enabled(false);
       var email = global.localStorage.getItem("testemail");
@@ -89,9 +93,16 @@ var lsCommandPluginFactory = function(md, emailProcessorBackend) {
       downloadCmd.enabled(true);
     };
 
+    saveAndContinueCmd.execute = function() {
+      saveAndContinueCmd.enabled(false);
+      viewModel.notifier.info(viewModel.t('Saving...'));
+      saveAndContinueCmd.enabled(true);
+    };
+
     viewModel.save = saveCmd;
     viewModel.test = testCmd;
     viewModel.download = downloadCmd;
+    viewModel.saveAndContinue = saveAndContinueCmd;
   }.bind(undefined, md.key, md.name);
 
   return commandsPlugin;
