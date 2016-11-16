@@ -6,3 +6,5 @@ uploads/**
 !.tmp/README.md
 build
 dist
+mosaico.sublime-project
+mosaico.sublime-workspace
