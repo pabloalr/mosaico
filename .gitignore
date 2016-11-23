@@ -8,3 +8,4 @@ build
 dist
 mosaico.sublime-project
 mosaico.sublime-workspace
+npm-debug.log
