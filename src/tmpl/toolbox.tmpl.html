@@ -43,45 +43,47 @@
 </div>
         
 <div id="toolimages" class="slidebar" data-bind="scrollable: true, css: { hidden: $root.showGallery() === false }">
-  <div class="close" data-bind="click: $root.showGallery.bind($element, false);">X</div>
-  <span class="pane-title" data-bind="text: $root.t('Gallery:')">Gallery:</span>
+  <div class="gallery-content">
+    <div class="close" data-bind="click: $root.showGallery.bind($element, false);">X</div>
+    <span class="pane-title" data-bind="text: $root.t('Gallery')">Gallery</span>
 
-  <div data-drop-content="Drop here" class="img-dropzone pane uploadzone" data-bind="attr: { 'data-drop-content': $root.t('Drop here') }, fudroppable: { activeClass: 'ui-state-highlight', hoverClass: 'ui-state-draghover' }">
-  <div class="mo-uploadzone" style="position: relative; padding: 2em; border: 2px dotted #808080">
-     <input class="fileupload" type="file" multiple name="files[]" data-bind="fileupload: { onerror: $root.notifier.error, onfile: $root.loadImage }" style="z-index: 10; position: absolute; top: 0; left: 0; right: 0; bottom: 0; min-width: 100%; min-height: 100%; font-zie: 999px; text-align: right; filter: alpha(opacity=0); opacity: 0; outline: none; cursor: inherit; display: block">
-     <span data-bind="text: $root.t('Click or drag files here')">Click or drag files here</span>
-     <div class="workzone" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
-       <div class="progress" style="opacity: .5; width: 80%; margin-left: 10%; position: absolute; bottom: 30%; height: 20px; border: 2px solid black;">
-         <div class="progress-bar progress-bar-success" style="height: 20px; background-color: black; "></div>
+    <div data-drop-content="Drop here" class="img-dropzone pane uploadzone" data-bind="attr: { 'data-drop-content': $root.t('Drop here') }, fudroppable: { activeClass: 'ui-state-highlight', hoverClass: 'ui-state-draghover' }">
+    <div class="mo-uploadzone" style="position: relative; padding: 2em; border: 2px dotted #808080">
+       <input class="fileupload" type="file" multiple name="files[]" data-bind="fileupload: { onerror: $root.notifier.error, onfile: $root.loadImage }" style="z-index: 10; position: absolute; top: 0; left: 0; right: 0; bottom: 0; min-width: 100%; min-height: 100%; font-zie: 999px; text-align: right; filter: alpha(opacity=0); opacity: 0; outline: none; cursor: inherit; display: block">
+       <span data-bind="text: $root.t('Click or drag files here')">Click or drag files here</span>
+       <div class="workzone" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
+         <div class="progress" style="opacity: .5; width: 80%; margin-left: 10%; position: absolute; bottom: 30%; height: 20px; border: 2px solid black;">
+           <div class="progress-bar progress-bar-success" style="height: 20px; background-color: black; "></div>
+         </div>
        </div>
-     </div>
-  </div>
-  </div>
-
-
-  <!-- ko if: $root.showGallery() -->
-  <div id="toolimagestab" class="tabs_horizontal" data-bind="tabs: { active: $root.selectedImageTab }">
-    <ul>
-      <li data-bind="tooltips: {}"><a title="Session images" data-local="true" href="#toolimagesrecent" data-bind="attr: { title: $root.t('Session images') }, text: $root.t('Recents')">Recents</a></li>
-      <li data-bind="tooltips: {}"><a title="Remote gallery" data-local="true" href="#toolimagesgallery" data-bind="attr: { title: $root.t('Remote gallery') }, text: $root.t('Gallery')">Gallery</a></li>
-    </ul>
-
-    <div id="toolimagesrecent">
-      <!-- ko if: galleryRecent().length == 0 --><div class="galleryEmpty" data-bind="text: $root.t('No images uploaded, yet')">No images uploaded, yet</div><!-- /ko -->
-      <!-- ko template: {name: 'gallery-images', data: { items: galleryRecent } } --># recent gallery #<!-- /ko -->
+    </div>
     </div>
 
-    <div id="toolimagesgallery" style="text-align: center">
-    <!-- ko if: $root.galleryLoaded() === false --><a class="loadbutton" title="Show images from the gallery" href="javascript:void(0)" data-bind="attr: { title: $root.t('Show images from the gallery') }, click: $root.loadGallery, button: { disabled: $root.galleryLoaded, icons: { primary: 'fa fa-fw fa-picture-o' }, label: $root.galleryLoaded() == 'loading' ? $root.t('Loading...') : $root.t('Load gallery'), text: true }"># load gally #</a><!-- /ko -->
+
+    <!-- ko if: $root.showGallery() -->
+    <div id="toolimagestab" class="tabs_horizontal" data-bind="tabs: { active: $root.selectedImageTab }">
+      <ul>
+        <li data-bind="tooltips: {}"><a title="Session images" data-local="true" href="#toolimagesrecent" data-bind="attr: { title: $root.t('Session images') }, text: $root.t('Recents')">Recents</a></li>
+        <li data-bind="tooltips: {}"><a title="Remote gallery" data-local="true" href="#toolimagesgallery" data-bind="attr: { title: $root.t('Remote gallery') }, text: $root.t('Gallery')">Gallery</a></li>
+      </ul>
+
+      <div id="toolimagesrecent">
+        <!-- ko if: galleryRecent().length == 0 --><div class="galleryEmpty" data-bind="text: $root.t('No images uploaded, yet')">No images uploaded, yet</div><!-- /ko -->
+        <!-- ko template: {name: 'gallery-images', data: { items: galleryRecent } } --># recent gallery #<!-- /ko -->
+      </div>
+
+      <div id="toolimagesgallery" style="text-align: center">
+      <!-- ko if: $root.galleryLoaded() === false --><a class="loadbutton" title="Show images from the gallery" href="javascript:void(0)" data-bind="attr: { title: $root.t('Show images from the gallery') }, click: $root.loadGallery, button: { disabled: $root.galleryLoaded, icons: { primary: 'fa fa-fw fa-picture-o' }, label: $root.galleryLoaded() == 'loading' ? $root.t('Loading...') : $root.t('Load gallery'), text: true }"># load gally #</a><!-- /ko -->
 
 
-    <!-- ko if: $root.galleryLoaded() === 'loading' --><div class="galleryEmpty" data-bind="text: $root.t('Loading gallery...')">Loading gallery...</div><!-- /ko -->
-    <!-- ko if: $root.galleryLoaded() === 0 --><div class="galleryEmpty" data-bind="text: $root.t('The gallery is empty')">The gallery is empty</div><!-- /ko -->
-    <!-- ko template: {name: 'gallery-images', data: { items: galleryRemote } } --># remote gallery #<!-- /ko -->
+      <!-- ko if: $root.galleryLoaded() === 'loading' --><div class="galleryEmpty" data-bind="text: $root.t('Loading gallery...')">Loading gallery...</div><!-- /ko -->
+      <!-- ko if: $root.galleryLoaded() === 0 --><div class="galleryEmpty" data-bind="text: $root.t('The gallery is empty')">The gallery is empty</div><!-- /ko -->
+      <!-- ko template: {name: 'gallery-images', data: { items: galleryRemote } } --># remote gallery #<!-- /ko -->
+      </div>
     </div>
-  </div>
-  <!-- /ko -->
+    <!-- /ko -->
 
+</div>
 </div>
 
 <div id="tooldebug" class="slidebar" data-bind="css: { hidden: $root.debug() === false }">
