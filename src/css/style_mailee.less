@@ -292,13 +292,14 @@
 // toolbar
 #toolbar { .align-vertically; height: @topbar-height; }
 #toolbar .rightButtons { margin-left: auto; }
-#toolbar .ui-button { background: transparent; line-height: @topbar-height; padding: 0 1.5em !important; }
+#toolbar .ui-button { background: transparent; color: #fff; line-height: @topbar-height; padding: 0 1.5em !important; }
 #toolbar .ui-button:hover { background-color: rgba(0,0,0,.15) }
 .mo .ui-buttonset { margin-right: 0; }
-#toolbar .ui-button .ui-button-text, #toolbar .ui-button .ui-icon { color: #cfddec; }
+/*#toolbar .ui-button .ui-button-text, #toolbar .ui-button .ui-icon { color: #cfddec; }*/
 #toolbar .ui-button-disabled, #toolbar .ui-button-disabled:hover { background: @accent-color; }
-#toolbar .ui-button.ui-button-disabled .ui-button-text, #toolbar .ui-button.ui-button-disabled .ui-icon { color: #8da2b9; }
-#toolbar .ui-icon { margin-bottom: 3px; }
+
+#toolbar .ui-button.ui-button-disabled, #toolbar .ui-button.ui-button-disabled .ui-button-text, #toolbar .ui-button.ui-button-disabled .ui-icon { color: #8da2b9; }
+#toolbar .ui-icon { vertical-align: text-top; }
 
 #toolbar .ui-button-primary { background-color: #50ca89; padding-left: 2em !important; border-radius: 0; }
 #toolbar .ui-button-primary:hover { background-color: #73d5a1; }
